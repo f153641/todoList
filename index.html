@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="wrapper">
+            <h1>代辦清單</h1>
+            <!-- 清單 -->
+            <div class="main">
+                <div class="input_bar">
+                    <input type="text" class="input" v-model="todo" @keyup.enter="add">
+                    <input type="button" class="send_btn" value="發送" @click="add">
+                </div>
+                <ul class="todo_list">
+                    <li class="todo_item" v-for="(item,index) in todoArr">
+                        <span>{{index+1}}</span>
+                        <p>{{item}}</p>
+                        <span class="remove" @click="remove(index)">x</span>
+                    </li>
+                </ul>
+                <div class="footer" v-if="todoArr.length!=0">
+                    <p class="total">共 {{todoArr.length}} 條</p>
+                    <span class="clear" @click="clear">清除</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
